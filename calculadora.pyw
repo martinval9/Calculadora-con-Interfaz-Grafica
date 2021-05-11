@@ -161,7 +161,7 @@ ayuda_de_menu = menubar.add_command(label = "Ayuda" , command = ayuda , font = "
 ayuda_menu.config(font = "monospace 9")
 
 
-imagen = PhotoImage(file = "img/grafico3.png")
+imagen = PhotoImage(file = "grafico3.png")
 imagen.config(height = 115)
 Label(root , image = imagen).pack()
 
