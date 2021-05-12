@@ -4,7 +4,7 @@ import math
 
 ventana = Tk()
 ventana.title('Calculadora')
-ventana.geometry('500x700')
+ventana.geometry('500x675')
 ventana.resizable(0,0)
 scroll_bar = Scrollbar(ventana)
 
@@ -18,7 +18,6 @@ frame.config(bg = "black")
 canva.pack(fill = "both" , expand = True)
 
 canva.create_window(0,0,window = frame , anchor = "nw")
-
 
 #---------StringVars--------
 
@@ -215,8 +214,7 @@ Button(frame , text = "Comprobar nºfinito" , command = comprobar_num_finito , b
 Button(frame , text = "Comprobar nºperiodico" , command = comprobar_num_periodico , bg = "#08412D" , fg = "#fff" , font = "monospace 9").pack()
 Button(frame , text = "Borrar" , command = borrar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 35).pack()
 
-
-Label(frame , text = "" , bg = "#030303").pack()
+Label(frame , text = "" , bg = "#000").pack()
 
 Label(frame , text = "  Hecho por martinval9  " , bg = "#000906" , fg = "#00FFA7" , font = "Sans 12").pack()
 Label(frame , text = "——————————————————————————————" , bg = "#000" , fg = "#00FFA7",font = "Sans 12").pack()
