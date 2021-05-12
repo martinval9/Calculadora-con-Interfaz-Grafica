@@ -1,13 +1,24 @@
 from tkinter import *
 from tkinter import messagebox as MessageBox
 import math
-import os
 
-root = Tk()
+ventana = Tk()
+ventana.title('Calculadora')
+ventana.geometry('500x700')
+ventana.resizable(0,0)
+scroll_bar = Scrollbar(ventana)
 
-root.title("Calculadora")
-root.config(bd = 2 , bg = "#000" , relief = "sunken")
-root.resizable(1,5)
+canva = Canvas(ventana,bg = "#000" , yscrollcommand = scroll_bar.set)
+scroll_bar.config(command=canva.yview,bg = "#009965")
+
+scroll_bar.pack(side = RIGHT,fill = Y)
+
+frame = Frame(canva)
+frame.config(bg = "black")
+canva.pack(fill = "both" , expand = True)
+
+canva.create_window(0,0,window = frame , anchor = "nw")
+
 
 #---------StringVars--------
 
@@ -142,57 +153,61 @@ def ayuda():
 
 #-----------Frontend-----------
 
-menubar = Menu(root)
-root.config(menu = menubar)
+menubar = Menu(ventana)
+ventana.config(menu = menubar)
 filemenu = Menu(menubar , tearoff = 0)
 filemenu.config(bg = "#000906" , fg = "#fff" , font = "monospace 9",relief="sunken")
-salir = filemenu.add_command(label = "Salir" , command = root.quit)
+salir = filemenu.add_command(label = "Salir" , command = frame.quit)
 
 file = menubar.add_cascade(label = "Archivo" , menu = filemenu)
 menubar.config(bg = "#000906" , fg = "#fff" , font = "monospace 9")
 
-acerca_de_menu = Menu(root)
+acerca_de_menu = Menu(ventana)
 acercade = menubar.add_command(label = "Acerca De" , command = acercade)
 acerca_de_menu.config(font = "monospace 9")
 
 
-ayuda_menu = Menu(root)
+ayuda_menu = Menu(ventana)
 ayuda_de_menu = menubar.add_command(label = "Ayuda" , command = ayuda , font = "monospace 9")
 ayuda_menu.config(font = "monospace 9")
 
 
-imagen = PhotoImage(file = "grafico3.png")
+imagen = PhotoImage(file = "img/grafico3.png")
 imagen.config(height = 115)
-Label(root , image = imagen).pack()
+Label(frame , image = imagen).pack()
 
 
-Label(text = "\nCalculadora\n____________",bg = "#000" , fg = "#fff" , font = "monospace 13").pack()
+Label(frame , text = "\nCalculadora\n____________",bg = "#000" , fg = "#fff" , font = "monospace 13").pack()
 
-Label(text = "\nNúmero 1" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
-Numero_1 = Entry(text="" , textvariable = num_1 , bg = "#000906" , fg = "#fff" , justify = "center").pack()
+Label(frame , text = "\nNúmero 1" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
+Numero_1 = Entry(frame , text="" , textvariable = num_1 , bg = "#000906" , fg = "#fff" , justify = "center").pack()
 
-Label(text = "\nNúmero 2" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
-Numero_2 = Entry(text = "" , textvariable = num_2 , bg = "#000906" , fg = "#fff" , justify = "center").pack()
+Label(frame , text = "\nNúmero 2" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
+Numero_2 = Entry(frame , text = "" , textvariable = num_2 , bg = "#000906" , fg = "#fff" , justify = "center").pack()
 
-Label(text = "\nResultado" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
-Resultado = Entry(text = "" , textvariable = resultado , bg = "#000906" , fg = "#00E99A" , cursor = "none" , justify = "center").pack()
+Label(frame , text = "\nResultado" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
+Resultado = Entry(frame , text = "" , textvariable = resultado , bg = "#000906" , fg = "#00E99A" , cursor = "none" , justify = "center").pack()
 
-Label(text = "" , bg = "#000").pack()
+Label(frame,text = "" , bg = "#000").pack()
+#Label(frame,text = "" , bg = "#000").pack()
 
 #--------Botones------------
-Button(text = "Sumar" , command = sumar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 38).pack()
-Button(text = "Restar" , command = restar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 35).pack()
-Button(text = "Multiplicar" , command = multiplicar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 18).pack()
-Button(text = "Dividir" , command = dividir , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 32).pack()
-Button(text = "Potencia" , command = potencia , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 28).pack()
-Button(text = "Raíz Cuadrada" , command = raiz_cuadrada , bg = "#08412D" , fg = "#fff" , font = "monospace 9").pack()
-Button(text = "Comprobar nºfinito" , command = comprobar_num_finito , bg = "#08412D" , fg = "#fff" , font = "monospace 9").pack()
-Button(text = "Comprobar nºperiodico" , command = comprobar_num_periodico , bg = "#08412D" , fg = "#fff" , font = "monospace 9").pack()
-Button(text = "Borrar" , command = borrar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 35).pack()
+Button(frame , text = "Sumar" , command = sumar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 38).pack()
+Button(frame , text = "Restar" , command = restar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 35).pack()
+Button(frame , text = "Multiplicar" , command = multiplicar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 18).pack()
+Button(frame , text = "Dividir" , command = dividir , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 32).pack()
+Button(frame , text = "Potencia" , command = potencia , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 28).pack()
+Button(frame , text = "Raíz Cuadrada" , command = raiz_cuadrada , bg = "#08412D" , fg = "#fff" , font = "monospace 9").pack()
+Button(frame , text = "Comprobar nºfinito" , command = comprobar_num_finito , bg = "#08412D" , fg = "#fff" , font = "monospace 9").pack()
+Button(frame , text = "Comprobar nºperiodico" , command = comprobar_num_periodico , bg = "#08412D" , fg = "#fff" , font = "monospace 9").pack()
+Button(frame , text = "Borrar" , command = borrar , bg = "#08412D" , fg = "#fff" , font = "monospace 9" , padx = 35).pack()
 
 
-Label(root , text = "" , bg = "#030303").pack()
+Label(frame , text = "" , bg = "#030303").pack()
 
-Label(root , text = "  Hecho por martinval9  " , bg = "#000906" , fg = "#00FFA7" , font = "Sans 12").pack()
-Label(root , text = "——————————————————————————————" , bg = "#000" , fg = "#00FFA7",font = "Sans 12").pack()
-root.mainloop()
+Label(frame , text = "  Hecho por martinval9  " , bg = "#000906" , fg = "#00FFA7" , font = "Sans 12").pack()
+Label(frame , text = "——————————————————————————————" , bg = "#000" , fg = "#00FFA7",font = "Sans 12").pack()
+Label(frame , text = "GNU GENERAL PUBLIC LICENSE\nVersion 2, June 1991\nCopyright (C) 1989, 1991 Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\nEveryone is permitted to copy and distribute verbatim copies\nof this license document, but changing it is not allowed." , bg = "#000" , fg = "#fff").pack()
+ventana.update()
+canva.config(scrollregion=canva.bbox("all"))
+ventana.mainloop()
