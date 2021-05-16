@@ -193,13 +193,13 @@ Label(frame , image = imagen).pack()
 Label(frame , text = "\nCalculadora\n____________",bg = "#000" , fg = "#fff" , font = "monospace 13").pack()
 
 Label(frame , text = "\nNúmero 1" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
-Numero_1 = Entry(frame , text="" , textvariable = num_1 , bg = "#000906" , fg = "#fff" , justify = "center").pack()
+Numero_1 = Entry(frame , text="" , textvariable = num_1 , bg = "#000906" , fg = "#fff" , justify = "center" , width = 22 , font = "monospace 12").pack()
 
 Label(frame , text = "\nNúmero 2" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
-Numero_2 = Entry(frame , text = "" , textvariable = num_2 , bg = "#000906" , fg = "#fff" , justify = "center").pack()
+Numero_2 = Entry(frame , text = "" , textvariable = num_2 , bg = "#000906" , fg = "#fff" , justify = "center" , width = 22 , font = "monospace 12").pack()
 
 Label(frame , text = "\nResultado" , bg = "#000" , fg = "#00FFA7" , font = "monospace 11").pack()
-Resultado = Entry(frame , text = "" , textvariable = resultado , bg = "#000906" , fg = "#00E99A" , cursor = "none" , justify = "center").pack()
+Resultado = Entry(frame , text = "" , textvariable = resultado , bg = "#000906" , fg = "#00E99A" , cursor = "none" , justify = "center" , width = 22 , font = "monospace 12").pack()
 
 Label(frame,text = "" , bg = "#000").pack()
 
