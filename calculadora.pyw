@@ -185,7 +185,7 @@ lgplv2 = licencia_de_menu.add_command(label = "Licencia LGPLv2.1" , command = lg
 licencia_de_menu.config(bg = "#000906" , fg = "#fff" , font = "monospace 9")
 
 
-imagen = PhotoImage(file = "img/grafico3.png")
+imagen = PhotoImage(file = "grafico3.png")
 imagen.config(height = 115)
 Label(frame , image = imagen).pack()
 
